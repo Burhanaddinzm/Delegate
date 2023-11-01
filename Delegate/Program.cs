@@ -114,20 +114,39 @@
 
 #region 2ci List ile
 
+//List<int> numbers = new List<int>()
+//{
+//    1,2,4,5,42,8,9,10,11,12,
+//};
+////FirstOrDefault methodu Func delegate'ni istiyir. Return type'i bool olmalidir ve parametri int.
+//int Num = numbers.FirstOrDefault((num) => num == 22);
+
+////Find methodu Predicate delegate'ni isteyir
+//Num = numbers.Find(x => x > 1 && x < 200);
+
+////bool FindNumber(int num)
+////{
+////    return num == 42;
+////}
+//Console.WriteLine(Num);
+
+#endregion
+
+#region 3cu
+
 List<int> numbers = new List<int>()
 {
-    1,2,4,5,42,8,9,10,11,12,
+    0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14
 };
-//FirstOrDefault methodu Func delegate'ni istiyir. Return type'i bool olmalidir ve parametri int.
-int Num = numbers.FirstOrDefault((num) => num == 22);
 
-//Find methodu Predicate delegate'ni isteyir
-Num = numbers.Find(x => x > 1 && x < 200);
-
-//bool FindNumber(int num)
-//{
-//    return num == 42;
-//}
-Console.WriteLine(Num);
+GetNumbers(x => x > 0 && x < 9);
+void GetNumbers(Func<int, bool> func)
+{
+    //x.Where (Func<int,bool>) . List ile isletsen x.Where().ToList()
+    foreach (int num in numbers.Where(func))
+    {
+        Console.WriteLine(num);
+    }
+}
 
 #endregion
